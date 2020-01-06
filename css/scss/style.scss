@@ -6,6 +6,12 @@ body {
 .show {
   display: block !important;
 }
+.show-inline {
+  display: inline-block !important;
+}
+.hide {
+  display: none !important;
+}
 
 .region {
   &.center {

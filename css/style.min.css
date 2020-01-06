@@ -1,2 +1,2 @@
-body{margin:0;padding:0}.show{display:block !important}.region.center{position:absolute;top:40%;left:50%;width:100%;text-align:center;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%)}.js-clock span{display:inline-block;font-size:150px}.js-clock span.format{display:none;margin:0 10px 0 0;font-size:60px}
+body{margin:0;padding:0}.show{display:block !important}.show-inline{display:inline-block !important}.hide{display:none !important}.region.center{position:absolute;top:40%;left:50%;width:100%;text-align:center;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%)}.js-clock span{display:inline-block;font-size:150px}.js-clock span.format{display:none;margin:0 10px 0 0;font-size:60px}
 /*# sourceMappingURL=style.min.css.map */

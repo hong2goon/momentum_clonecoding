@@ -11,11 +11,11 @@ function getTime() {
     amOrPm = date.toLocaleTimeString('en-US').split(' ')[1];
   
   if (clockContainer.classList.contains('hour12')) {
-    clockFormat.classList.add('show');
+    clockFormat.classList.add('show-inline');
     clockFormat.innerText = amOrPm;
     clockTime.innerHTML = `<span class="hours">${hours12 < 10 ? `0${hours12}` : hours12}</span>:<span class="minutes">${minutes < 10 ? `0${minutes}` : minutes}</span><span class="seconds">:${seconds < 10 ? `0${seconds}` : seconds}</span>`;
   } else {
-    clockFormat.classList.remove('show');
+    clockFormat.classList.remove('show-inline');
     clockTime.innerHTML = `<span class="hours">${hours < 10 ? `0${hours}` : hours}</span>:<span class="minutes">${minutes < 10 ? `0${minutes}` : minutes}</span><span class="seconds">:${seconds < 10 ? `0${seconds}` : seconds}</span>`;
   }
 }
