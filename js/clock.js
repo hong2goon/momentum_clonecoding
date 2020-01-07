@@ -8,7 +8,8 @@ function getTime() {
     hours12 = hours % 12 || 12,
     minutes = date.getMinutes(),
     seconds = date.getSeconds(),
-    amOrPm = date.toLocaleTimeString('en-US').split(' ')[1];
+    amOrPm = date.toLocaleTimeString('en-US').split(' ')[1],
+    viewSec = localStorage.getItem("show seconds");
   
   if (clockContainer.classList.contains('hour12')) {
     clockFormat.classList.add('show-inline');
@@ -18,6 +19,7 @@ function getTime() {
     clockFormat.classList.remove('show-inline');
     clockTime.innerHTML = `<span class="hours">${hours < 10 ? `0${hours}` : hours}</span>:<span class="minutes">${minutes < 10 ? `0${minutes}` : minutes}</span><span class="seconds">:${seconds < 10 ? `0${seconds}` : seconds}</span>`;
   }
+  viewSec === "true" ? clockTime.querySelector('.seconds').classList.remove('hide') : clockTime.querySelector('.seconds').classList.add('hide');
 }
 
 function clockInit() {

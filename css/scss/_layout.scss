@@ -17,16 +17,27 @@ body {
 }
 
 .region {
+  position: absolute;
   &.center {
-    position: absolute;
     top: 40%;
     left: 50%;
     width: 100%;
     text-align: center;
     transform: translate(-50%, -50%);
   }
+  &.left {
+    left: 0;
+  }
+  &.right {
+    right: 0;
+  }
+  &.top {
+    top: 0;
+  }
+  &.bottom {
+    bottom: 0;
+  }
   &.cover {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;

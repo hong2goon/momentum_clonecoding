@@ -9,10 +9,35 @@
     border: none;
     border-bottom: 2px solid #fff;
     background: transparent;
+    outline: none;
   }
 }
 
 .js-greeting {
-  padding: 5px 5px 6px;
+  position:relative;
+  display: inline-block;
+  padding: 5px 55px 6px 5px;
+  width: auto;
   font-size: 54px;
+
+  .btn-edit {
+    position: absolute;
+    top: 55%;
+    right: 5px;
+    width: 32px; height: 32px;
+    background: transparent url('../../images/edit.svg') 50% 50% no-repeat;
+    background-size: 120%;
+    text-indent: -9999px;
+    border: none;
+    opacity: 0;
+    cursor: pointer;
+    outline: none;
+    transform: translateY(-50%);
+    transition: opacity 0.5s ease-out;
+  }
+  &:hover {
+    .btn-edit {
+      opacity: 1;
+    }
+  }
 }

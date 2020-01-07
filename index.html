@@ -21,11 +21,44 @@
     </div>
     <div class="region cover"></div>
     <div class="region bottom left">
-      <form class="js-settingForm">
-        <label>12h
-          <input type="checkbox" name="12h" value="12h">
-        </label>
-      </form>
+      <div class="settings">
+        <div class="setting-pannel-wrap">
+          <div class="setting-pannel">
+            <ul class="nav-menu">
+              <li class="nav-item">Setting</li>
+              <li class="nav-item active">clock</li>
+            </ul>
+            <div class="setting-view">
+              <!-- <div class="set-cont1">
+                <form class="js-settingForm">
+                  <h2>Setting</h2>
+                  <span>Custom your board</span>
+                </form>
+              </div> -->
+              <div class="set-cont2">
+                <form class="js-settingForm">
+                  <h2>Clock</h2>
+                  <span>Setting clock options</span>
+                  <h3>Options</h3>
+                  <ul class="setting-list">
+                    <li>
+                      <label>12h
+                        <input type="checkbox" class="chk-12h" name="12h" value="12h" />
+                      </label>
+                    </li>
+                    <li>
+                      <label>show seconds
+                        <input type="checkbox" class="chk-sec" name="sec" value="sec" />
+                      </label>
+                    </li>
+                  </ul>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn-setting"><i class="icon">setting</i></button>
+      </div>
     </div>
     <script src="js/clock.js"></script>
     <script src="js/greeting.js"></script>

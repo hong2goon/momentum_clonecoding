@@ -1,10 +1,22 @@
 const form = document.querySelector(".js-form"),
     input = form.querySelector("input"),
-    greeting = document.querySelector(".js-greeting");
+    greeting = document.querySelector(".js-greeting"),
+    btnEdit = document.querySelector(".btn-edit");
 
 const USER_LS = "currentUser",
     HIDE_CN = "hide";
 
+function reloadName() {
+    greeting.classList.add(HIDE_CN);
+    askForName();
+}
+
+function handleEdit(event) {
+    event.preventDefault();
+    reloadName();
+    input.value = localStorage.getItem(USER_LS);
+    input.focus();
+}
 
 function saveName(name) {
     localStorage.setItem(USER_LS, name);
@@ -43,8 +55,7 @@ function paintGreeting(name) {
             greet = "Good Evening";
         }
     }
-    greeting.innerHTML = `<span class="greeting">${greet}</span>, <span class="userName">${name}</span>.`;
-    
+    greeting.innerHTML = `<span class="greeting">${greet}</span>, <span class="userName">${name}</span>. <button class="btn-edit" onClick="handleEdit(event);">edit</button>`;
 }
 
 function loadName() {
