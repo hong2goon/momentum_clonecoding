@@ -10,7 +10,7 @@ function handleImgLoad() {
 function paintImage(imgNumber) {
     const image = new Image(), 
         imageWrap = document.createElement('div');
-    image.src = `../images/background/${imgNumber + 1}.jpg`;
+    image.src = `images/background/${imgNumber + 1}.jpg`;
     imageWrap.classList.add("bgImage");
     imageWrap.appendChild(image);
     cover.appendChild(imageWrap);
