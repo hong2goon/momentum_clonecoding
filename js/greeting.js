@@ -51,7 +51,7 @@ function paintGreeting(name) {
             greet = "Good Morning";
         } else if (hours >= 12 && hours < 17) {
             greet = "Good Afternoon";
-        } else if (hours > 17 && hours < 5) {
+        } else {
             greet = "Good Evening";
         }
     }
