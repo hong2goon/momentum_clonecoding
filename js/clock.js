@@ -5,7 +5,7 @@ const clockContainer = document.querySelector('.js-clock'),
 function getTime() {
   const date = new Date(),
     hours = date.getHours(),
-    hours12 = hours % 12,
+    hours12 = hours % 12 || 12,
     minutes = date.getMinutes(),
     seconds = date.getSeconds(),
     amOrPm = date.toLocaleTimeString('en-US').split(' ')[1];
@@ -21,6 +21,7 @@ function getTime() {
 }
 
 function clockInit() {
+  localStorage.getItem("hour12") == "true" ? clockContainer.classList.add('hour12') : clockContainer.classList.remove('hour12');
   getTime();
   setInterval(getTime, 1000);
 }
