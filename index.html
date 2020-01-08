@@ -9,6 +9,7 @@
   <body>
     <div class="region flex">
       <div class="flex-item half-top">
+        <!-- clock -->
         <div class="clock-wrap">
           <div class="js-clock">
             <span class="format">AM</span>
@@ -16,6 +17,8 @@
             <span class="seconds">:00</span>
           </div>
         </div>
+
+        <!-- greeting -->
         <div class="greeting-wrap">
           <form class="js-form">
             <input type="text" placeholder="What is your name?" />
@@ -25,20 +28,35 @@
           </div>
         </div>
       </div>
+
       <div class="flex-item half-bottom">
-        <div class="todo-wrap">
-          <form class="js-todo-form">
-            <input type="text" placeholder="write a to-do" />
-          </form>
+        <!-- todo list -->
+        <div class="todoList-wrap">
           <ul class="js-toDoList"></ul>
         </div>
       </div>
     </div>
-    <div class="region cover"></div>
+
+    <!-- todo input -->
+    <div class="region bottom right">
+      <div class="todo-wrap">
+        <div class="todo-panel-wrap">
+          <div class="todo-panel">
+            <h2>Add a todo to get start</h2>
+            <form class="js-todo-form">
+              <input type="text" placeholder="write a todo" />
+            </form>
+          </div>
+        </div>
+        <button class="btn-todo">ToDo</button>
+      </div>
+    </div>
+    
+    <!-- setting -->
     <div class="region bottom left">
       <div class="settings">
-        <div class="setting-pannel-wrap">
-          <div class="setting-pannel">
+        <div class="setting-panel-wrap">
+          <div class="setting-panel">
             <ul class="nav-menu">
               <li class="nav-item active"><a href="#setting">Setting</a></li>
               <li class="nav-item"><a href="#clock">clock</a></li>
@@ -122,6 +140,11 @@
         <button class="btn-setting"><i class="icon">setting</i></button>
       </div>
     </div>
+
+    <!-- backgroun -->
+    <div class="region cover"></div>
+
+    <!-- js -->
     <script src="js/setting.js"></script>
     <script src="js/clock.js"></script>
     <script src="js/greeting.js"></script>

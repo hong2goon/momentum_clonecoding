@@ -1,3 +1,141 @@
-.todo-wrap {
+.todoList-wrap {
   margin-top: 40px;
+
+  .js-toDoList {
+    margin: 16px auto;
+    padding: 15px 15px 30px;
+    width: 100%;
+    max-width: 600px;
+    max-height: 200px;
+    overflow: auto;
+    list-style: none;
+    &.active {
+      background: rgba(0,0,0,.5);
+      border-radius: 8px;
+      &:before {
+        content:'To-Do';
+        display: block;
+        padding: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: left;
+      }
+    }
+    .todo-item {
+      position: relative;
+      padding: 6px 10px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,.3);
+
+      .btn-del {
+        position: absolute;
+        display: block;
+        top: 50%;
+        right: 0;
+        width: 30px;
+        height: 30px;
+        text-indent: -9999px;
+        background: transparent url('../images/delete.svg') 50% 50% no-repeat;
+        background-size: 40%;
+        border: none;
+        opacity: .3;
+        cursor: pointer;
+        transform: translateY(-50%);
+        transition: opacity .5s ease-out;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.todo-wrap {
+  position: relative;
+
+  .btn-todo {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 60px;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    background: transparent;
+    outline: none;
+    opacity: .7;
+    cursor: pointer;
+    transition: opacity .5s ease-in, filter .5s ease-in;
+
+    &:hover {
+        opacity: 1;
+    }
+  }
+
+  .todo-panel-wrap {
+    position: relative;
+    display: none;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: all .15s linear;
+
+    .todo-panel {
+      position:absolute;
+      bottom: 0;
+      right: 7px;
+      padding: 15px;
+      width: 300px;
+      background: rgba(0,0,0,.8);
+      border-radius: 7px;
+
+      &:after {
+        content: '';
+        display: block;
+        position:absolute;
+        bottom: -20px;
+        right: 25px;
+        width: 0px;
+        height: 0px;
+        border: 10px solid transparent;
+        border-top:10px solid rgba(0,0,0,.8);
+      }
+
+      h2 {
+        display: block;
+        margin: 5px 10px 15px;
+        font-size: 18px;
+        font-weight: normal;
+        color: rgba(255,255,255,.7);
+        text-align: center;
+      }
+      .js-todo-form {
+        input[type=text] {
+          margin-bottom: 10px;
+          padding: 5px;
+          font-size: 16px;
+          line-height: 30px;
+          width: 100%;
+          color: #fff;
+          background: #000;
+          border: none;
+          border-bottom: 1px solid rgba(255,255,255,.4);
+          outline: none;
+          box-sizing: border-box;
+
+          &:focus {
+            border-bottom: 1px solid rgba(255,255,255,.8);
+          }
+        }
+      }
+    }
+  }
+
+  &.show-fade-in {
+    .todo-panel-wrap {
+        display: block;
+        opacity: 1;
+    }
+}
 }

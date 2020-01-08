@@ -95,13 +95,24 @@ function showSec() {
     });
 }
 
-function handleSettings() {
+function handleSettings(event) {
+    event.stopPropagation();
     Settings.classList.toggle("show-fade-in");
     selMenu();
 }
 
 function btnSettings() {
     btnSetting.addEventListener("click", handleSettings);
+}
+
+function setPanelClose() {
+    document.addEventListener("click", function(event){
+        event.preventDefault();
+        // if (!event.target.parentElement.classList.contains("setting")) {
+        //     const panelOpen = Settings.classList.contains("show-fade-in");
+        //     panelOpen ? Settings.classList.remove("show-fade-in") : null;
+        // }
+    })
 }
 
 function lsInit(){
@@ -125,5 +136,6 @@ function setInit() {
     checkHour();
     showSec();
     btnSettings();
+    setPanelClose();
 }
 setInit();

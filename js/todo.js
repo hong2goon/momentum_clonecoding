@@ -1,7 +1,9 @@
-const todoWrap = document.querySelector(".todo-wrap"),
+const todoListWrap = document.querySelector(".todoList-wrap"),
+    todoList = todoListWrap.querySelector(".js-toDoList"),
+    todoWrap = document.querySelector(".todo-wrap"),
     todoForm = todoWrap.querySelector(".js-todo-form"),
     todoInput = todoForm.querySelector("input"),
-    todoList = todoWrap.querySelector(".js-toDoList");
+    btnTodo = todoWrap.querySelector(".btn-todo");
 
 const TODOS_LS = "toDos";
 
@@ -11,6 +13,11 @@ function deleteToDo(event) {
     const btn = event.target,
         li = btn.parentNode;
     todoList.removeChild(li);
+
+    const length = todoList.querySelectorAll("li").length;
+    if (length === 0) {
+        todoList.classList.remove("active");
+    } 
 
     const cleanToDos = toDos.filter(function filterFn(toDo) {
         return toDo.id !== parseInt(li.id);
@@ -30,12 +37,15 @@ function paintToDo(text) {
         newId = toDos.length + 1;
 
     span.innerText = text;
+    delBtn.classList.add("btn-del");
     delBtn.innerHTML = "X";
     delBtn.addEventListener("click", deleteToDo);
     li.appendChild(span);
     li.appendChild(delBtn);
     li.id = newId;
+    li.classList.add("todo-item");
     todoList.appendChild(li);
+    todoList.classList.add("active");
 
     const toDoObj = {
         id: newId,
@@ -62,11 +72,33 @@ function loadToDos() {
     }
 }
 
+function handleTodo(event) {
+    event.stopPropagation();
+    todoWrap.classList.toggle("show-fade-in");
+}
+
+function btnTodos() {
+    btnTodo.addEventListener("click", handleTodo);
+}
+
+function todoPanelClose() {
+    document.addEventListener("click", function(event){
+        event.preventDefault();
+        // if (!event.target.classList.contains("todo-panel")) {
+        //     const panelOpen = todoWrap.classList.contains("show-fade-in");
+        //     panelOpen ? todoWrap.classList.remove("show-fade-in") : null;
+        // }
+    })
+}
+
 function todoInit() {
     if(localStorage.getItem(TODOS_LS) == null) {
         localStorage.setItem(TODOS_LS, "[]");
+        todoList.classList.remove("active");
     }
     loadToDos();
+    btnTodos();
+    todoPanelClose();
     todoForm.addEventListener("submit", handleTodoSubmit);
 }
 
