@@ -1,11 +1,75 @@
 const Settings = document.querySelector(".settings"),
-    btnSetting = Settings.querySelector(".btn-setting"),
-    setForm = document.querySelector(".js-settingForm"),
-    chkHour12 = setForm.querySelector("input.chk-12h"),
-    chkSec = setForm.querySelector("input.chk-sec");
+    btnSetting = Settings.querySelector(".btn-setting");
 
-const HOUR12_LS = "hour12",
-    SEC_LS = "show seconds";
+const navMenu = Settings.querySelector(".nav-menu"),
+    menuItems = navMenu.querySelectorAll("li"),
+    setConts = Settings.querySelectorAll(".set-cont");
+
+const 
+    setForm1 = document.querySelector(".js-settingForm1"),
+    chkClock = setForm1.querySelector("input.chk-clock"),
+    chkGreeting = setForm1.querySelector("input.chk-greeting");
+
+const 
+    setForm2 = document.querySelector(".js-settingForm2"),
+    chkHour12 = setForm2.querySelector("input.chk-12h"),
+    chkSec = setForm2.querySelector("input.chk-sec");
+
+const VIEW_CLOCK_LS = "view clock",
+    VIEW_GREET_LS = "view greeting",
+    HOUR12_LS = "hour12",
+    SEC_LS = "seconds";
+
+function selMenu() {
+    for (let i=0; i<menuItems.length; i++) {
+        menuItems[i].querySelector("a").addEventListener("click", function(e) {
+            e.preventDefault();
+            if (this.parentElement.previousElementSibling !== null) {
+                this.parentElement.previousElementSibling.classList.remove("active");
+            }
+            if (this.parentElement.nextElementSibling !== null) {
+                this.parentElement.nextElementSibling.classList.remove("active");
+            }
+            this.parentElement.classList.add("active");
+            if (setConts[i].previousElementSibling !== null) {
+                setConts[i].previousElementSibling.classList.add("hide");
+            }
+            if (setConts[i].nextElementSibling !== null) {
+                setConts[i].nextElementSibling.classList.add("hide");
+            }
+            setConts[i].classList.remove("hide");
+
+            const menuTit = this.textContent;
+            if (menuTit === "clock") {
+                
+            }
+        });
+    }
+}
+
+function checkClock() {
+    chkClock.addEventListener("change", (event) => {
+        if (event.target.checked) {
+            localStorage.setItem(VIEW_CLOCK_LS, "true");
+            clockContainer.classList.remove("hide");
+        } else {
+            localStorage.setItem(VIEW_CLOCK_LS, "false");
+            clockContainer.classList.add("hide");
+        }
+    });
+}
+
+function checkGreet() {
+    chkGreeting.addEventListener("change", (event) => {
+        if (event.target.checked) {
+            localStorage.setItem(VIEW_GREET_LS, "true");
+            greetWrap.classList.remove("hide");
+        } else {
+            localStorage.setItem(VIEW_GREET_LS, "false");
+            greetWrap.classList.add("hide");
+        }
+    });
+}
 
 function checkHour() {
     chkHour12.addEventListener("change", (event) => {
@@ -34,6 +98,7 @@ function showSec() {
 
 function handleSettings() {
     Settings.classList.toggle("show-fade-in");
+    selMenu();
 }
 
 function btnSettings() {
@@ -41,10 +106,27 @@ function btnSettings() {
 }
 
 function setInit() {
+    if(localStorage.getItem("view clock") == null) {
+        localStorage.setItem("view clock", "true");
+    }
+    if(localStorage.getItem("view greeting") == null) {
+        localStorage.setItem("view greeting", "true");
+    }
+    if(localStorage.getItem("hour12") == null) {
+        localStorage.setItem("hour12", "false");
+    }
+    if(localStorage.getItem("seconds") == null) {
+        localStorage.setItem("seconds", "false");
+    }
+    localStorage.getItem("view clock") == "true" ? chkClock.checked = true : chkClock.checked = false;
+    localStorage.getItem("view clock") == "true" ? chkGreeting.checked = true : chkGreeting.checked = false;
     localStorage.getItem("hour12") == "true" ? chkHour12.checked = true : chkHour12.checked = false;
-    localStorage.getItem("show seconds") == "true" ? chkSec.checked = true : chkSec.checked = false;
-    btnSettings();
+    localStorage.getItem("seconds") == "true" ? chkSec.checked = true : chkSec.checked = false;
+
+    checkClock();
+    checkGreet();
     checkHour();
     showSec();
+    btnSettings();
 }
 setInit();

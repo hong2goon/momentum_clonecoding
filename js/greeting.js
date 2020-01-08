@@ -1,5 +1,6 @@
-const form = document.querySelector(".js-form"),
-    input = form.querySelector("input"),
+const greetWrap = document.querySelector(".greeting-wrap"),
+    greetForm = greetWrap.querySelector(".js-form"),
+    input = greetForm.querySelector("input"),
     greeting = document.querySelector(".js-greeting"),
     btnEdit = document.querySelector(".btn-edit");
 
@@ -30,12 +31,12 @@ function handleSubmit(event) {
 }
 
 function askForName() {
-    form.classList.remove(HIDE_CN);
-    form.addEventListener("submit", handleSubmit);
+    greetForm.classList.remove(HIDE_CN);
+    greetForm.addEventListener("submit", handleSubmit);
 }
 
 function paintGreeting(name) {
-    form.classList.add(HIDE_CN);
+    greetForm.classList.add(HIDE_CN);
     greeting.classList.remove(HIDE_CN);
     const clock = document.querySelector(".js-clock"),
         hours12 = clock.classList.contains('hour12'),
@@ -60,7 +61,7 @@ function paintGreeting(name) {
 
 function loadName() {
     const currentUser = localStorage.getItem(USER_LS);
-    if(currentUser === null) {
+    if(currentUser === null || currentUser === "null") {
         askForName();
     } else {
         paintGreeting(currentUser);
@@ -68,6 +69,9 @@ function loadName() {
 }
 
 function greetInit() {
+    if(localStorage.getItem("currentUser") == null) {
+        localStorage.setItem("currentUser", "null");
+    }
     loadName();
 }
 greetInit();

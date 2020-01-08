@@ -25,7 +25,6 @@
             background: transparent url('../images/setting.svg') 50% 50% no-repeat;
             background-size: 100%;
             text-indent: -9999px;
-            transition: transform .15s linear;
         }
     }
     
@@ -35,6 +34,7 @@
         z-index: 1;
         opacity: 0;
         transform: translateY(5px);
+        transition: all .15s linear;
 
         .setting-pannel {
             position:absolute;
@@ -49,7 +49,7 @@
                 position: relative;
                 width: 150px;
                 margin: 8px 0;
-                padding: 28px 0;
+                padding: 10px 0;
                 display: flex;
                 flex-direction: column;
                 border-right: 1px solid rgba(255,255,255,.12);
@@ -68,6 +68,11 @@
                         font-size: 22px;
                         opacity: 1;
                     }
+
+                    a {
+                        color: #fff;
+                        text-decoration: none;
+                    }
                 }
             }
 
@@ -79,6 +84,8 @@
                 }
 
                 .js-settingForm {
+                    height: 10%;
+                    overflow: hidden;
                     h2 {
                         display: inline-block;
                         margin: 0 0 5px;
@@ -163,24 +170,6 @@
                                     }
                                 }
                             }
-
-                            // .form-chk, .form-chk label {display:inline-block;}
-                            // .form-chk label {position:relative;}
-                            // .form-chk {
-                            //     input[type="checkbox"] {
-                            //         position:absolute; top:0; left:0; width:100%; opacity:0; z-index:-1;
-                            //         & + span {
-                            //             position:relative; display:inline-block; width:48px; height:24px; text-indent:-9999px; background:$oc-gray-2; border-radius:12px; overflow:hidden; transition:350ms 150ms;
-                            //         &:before {
-                            //             content:""; display:block; position:absolute; top:2px; left:2px; width:20px; height:20px; background:$oc-white; border-radius:50%; box-shadow:0 2px 2px -12px rgba(0,0,0,.5); transition:500ms ease-in-out;
-                            //         }
-                            //     }
-                            //     &:checked + span {
-                            //         background:$oc-green-4;
-                            //     &:before {
-                            //         left:26px;
-                            //     }
-                            // }
                         }
                     }
                 }
@@ -202,5 +191,14 @@
             display: block;
             opacity: 1;
         }
+    }
+}
+
+@keyframes fade-height {
+    from {
+        height: 0;
+    }
+    to {
+        height: 100%;
     }
 }

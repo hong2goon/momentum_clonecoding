@@ -8,15 +8,19 @@
   </head>
   <body>
     <div class="region center">
-      <div class="js-clock">
-        <span class="format">AM</span>
-        <span class="time">00:00</span>
+      <div class="clock-wrap">
+        <div class="js-clock">
+          <span class="format">AM</span>
+          <span class="time">00:00</span>
+        </div>
       </div>
-      <form class="js-form">
-        <input type="text" placeholder="What is your name?" />
-      </form>
-      <div class="js-greeting hide">
-        greeting, username.
+      <div class="greeting-wrap">
+        <form class="js-form">
+          <input type="text" placeholder="What is your name?" />
+        </form>
+        <div class="js-greeting hide">
+          greeting, username.
+        </div>
       </div>
     </div>
     <div class="region cover"></div>
@@ -25,18 +29,57 @@
         <div class="setting-pannel-wrap">
           <div class="setting-pannel">
             <ul class="nav-menu">
-              <li class="nav-item">Setting</li>
-              <li class="nav-item active">clock</li>
+              <li class="nav-item active"><a href="#setting">Setting</a></li>
+              <li class="nav-item"><a href="#clock">clock</a></li>
             </ul>
             <div class="setting-view">
-              <!-- <div class="set-cont1">
-                <form class="js-settingForm">
+              <div class="set-cont setting">
+                <form class="js-settingForm js-settingForm1">
                   <h2>Setting</h2>
                   <span>Custom your board</span>
+                  <h3>View</h3>
+                  <ul class="setting-list">
+                    <li>
+                      <span class="label">Clock</span>
+                      <div class="toggle-switch">
+                        <label>
+                          <input type="checkbox" class="chk-clock" name="clock" value="clock" />
+                          <span>clock</span>
+                        </label>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="label">Greeting</span>
+                      <div class="toggle-switch">
+                        <label>
+                          <input type="checkbox" class="chk-greeting" name="gretting" value="greeting" />
+                          <span>clock</span>
+                        </label>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="label">Weather</span>
+                      <div class="toggle-switch">
+                        <label>
+                          <input type="checkbox" class="chk-weather" name="weather" value="weather" disabled />
+                          <span>clock</span>
+                        </label>
+                      </div>
+                    </li>
+                    <li>
+                      <span class="label">To-do</span>
+                      <div class="toggle-switch">
+                        <label>
+                          <input type="checkbox" class="chk-todo" name="todo" value="todo" disabled />
+                          <span>clock</span>
+                        </label>
+                      </div>
+                    </li>
+                  </ul>
                 </form>
-              </div> -->
-              <div class="set-cont2">
-                <form class="js-settingForm">
+              </div>
+              <div class="set-cont clock hide">
+                <form class="js-settingForm js-settingForm2">
                   <h2>Clock</h2>
                   <span>Setting clock options</span>
                   <h3>Options</h3>

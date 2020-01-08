@@ -10,6 +10,10 @@
     border-bottom: 2px solid #fff;
     background: transparent;
     outline: none;
+
+    &::placeholder {
+      color: rgba(255,255,255,.5);
+    }
   }
 }
 
