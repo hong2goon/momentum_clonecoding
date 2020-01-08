@@ -2,7 +2,7 @@
   display: inline-block;
   .js-clock {
     position: relative;
-    padding-left: 110px;
+    padding: 0 100px 0 110px;
   
     span {
       display: inline-block;
@@ -14,9 +14,6 @@
         bottom: 20px;
         left: 0;
         font-size: 60px;
-      }
-      &.time {
-        padding-right: 100px;
       }
       &.seconds {
         position: absolute;

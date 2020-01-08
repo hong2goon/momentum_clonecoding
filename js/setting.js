@@ -85,13 +85,12 @@ function checkHour() {
 
 function showSec() {
     chkSec.addEventListener("change", (event) => {
-        const sec = clockTime.querySelector(".seconds");
         if (event.target.checked) {
             localStorage.setItem(SEC_LS, "true");
-           sec.classList.add("hide");
+            clockSec.classList.remove("hide");
         } else {
             localStorage.setItem(SEC_LS, "false");
-            sec.classList.remove("hide");
+            clockSec.classList.add("hide");
         }
     });
 }
@@ -105,24 +104,22 @@ function btnSettings() {
     btnSetting.addEventListener("click", handleSettings);
 }
 
-function setInit() {
+function lsInit(){
     if(localStorage.getItem("view clock") == null) {
         localStorage.setItem("view clock", "true");
     }
     if(localStorage.getItem("view greeting") == null) {
         localStorage.setItem("view greeting", "true");
     }
-    if(localStorage.getItem("hour12") == null) {
-        localStorage.setItem("hour12", "false");
-    }
-    if(localStorage.getItem("seconds") == null) {
-        localStorage.setItem("seconds", "false");
-    }
+    
     localStorage.getItem("view clock") == "true" ? chkClock.checked = true : chkClock.checked = false;
     localStorage.getItem("view clock") == "true" ? chkGreeting.checked = true : chkGreeting.checked = false;
     localStorage.getItem("hour12") == "true" ? chkHour12.checked = true : chkHour12.checked = false;
     localStorage.getItem("seconds") == "true" ? chkSec.checked = true : chkSec.checked = false;
+}
 
+function setInit() {
+    lsInit();
     checkClock();
     checkGreet();
     checkHour();
