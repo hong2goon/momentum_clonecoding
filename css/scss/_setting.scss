@@ -1,5 +1,6 @@
 .settings {
     position: relative;
+    z-index: 998;
 
     .btn-setting {
         position: relative;
@@ -191,6 +192,7 @@
     }
 
     &.show-fade-in {
+        z-index: 1000;
         .btn-setting {
             opacity: 1;
 

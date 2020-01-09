@@ -5,14 +5,12 @@ const navMenu = Settings.querySelector(".nav-menu"),
     menuItems = navMenu.querySelectorAll("li"),
     setConts = Settings.querySelectorAll(".set-cont");
 
-const 
-    setForm1 = document.querySelector(".js-settingForm1"),
+const setForm1 = document.querySelector(".js-settingForm1"),
     chkClock = setForm1.querySelector("input.chk-clock"),
     chkGreeting = setForm1.querySelector("input.chk-greeting"),
     chkTodo = setForm1.querySelector("input.chk-todo");
 
-const 
-    setForm2 = document.querySelector(".js-settingForm2"),
+const setForm2 = document.querySelector(".js-settingForm2"),
     chkHour12 = setForm2.querySelector("input.chk-12h"),
     chkSec = setForm2.querySelector("input.chk-sec");
 
@@ -46,6 +44,25 @@ function selMenu() {
                 
             }
         });
+    }
+}
+
+function makeDim() {
+    const body = document.querySelector("body"),
+        dim = document.createElement("div");
+    dim.classList.add("dimmed");
+    body.appendChild(dim);
+
+    dim.addEventListener("click", delDim);
+}
+
+function delDim() {
+    const body = document.querySelector("body"),
+        dimmed = document.querySelector(".dimmed"),
+        modal = document.querySelector(".show-fade-in");
+    body.removeChild(dimmed);
+    if (modal !== null) {
+        modal.classList.remove("show-fade-in");    
     }
 }
 
@@ -112,8 +129,10 @@ function showSec() {
 }
 
 function handleSettings(event) {
-    event.stopPropagation();
+    event.preventDefault();
     Settings.classList.toggle("show-fade-in");
+    const modalOpen = Settings.classList.contains("show-fade-in");
+    modalOpen ? makeDim() : delDim();
     selMenu();
 }
 

@@ -2,6 +2,7 @@
   margin-top: 40px;
 
   .js-toDoList {
+    position: relative;
     margin: 16px auto;
     padding: 0;
     width: 100%;
@@ -11,6 +12,7 @@
     border-radius: 8px;
     overflow: hidden;
     box-sizing: border-box;
+    z-index: 1000;
 
     &.active {
       padding: 15px 15px 30px;
@@ -67,6 +69,7 @@
 
 .todo-wrap {
   position: relative;
+  z-index: 998;
 
   .btn-todo {
     position: relative;
@@ -147,6 +150,8 @@
   }
 
   &.show-fade-in {
+    z-index: 1000;
+
     .todo-panel-wrap {
         display: block;
         opacity: 1;

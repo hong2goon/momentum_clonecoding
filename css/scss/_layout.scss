@@ -1,7 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  width: 100%;
+  min-width: 320px;
   background: #333;
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
@@ -59,6 +60,7 @@ html, body {height: 100%;}
     }
   }
   &.cover {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -66,4 +68,15 @@ html, body {height: 100%;}
     overflow: hidden;
     z-index:-1;
   }
+}
+
+.dimmed {
+  position: fixed;
+  top: 0; 
+  left :0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, white 0%, white 20%);
+  opacity: .2;
+  z-index:999;
 }

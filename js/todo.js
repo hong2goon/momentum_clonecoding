@@ -75,8 +75,10 @@ function loadToDos() {
 }
 
 function handleTodo(event) {
-    event.stopPropagation();
+    event.preventDefault();
     todoWrap.classList.toggle("show-fade-in");
+    const modalOpen = todoWrap.classList.contains("show-fade-in");
+    modalOpen ? makeDim() : delDim();
 }
 
 function btnTodos() {
