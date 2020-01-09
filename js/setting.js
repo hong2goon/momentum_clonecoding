@@ -8,6 +8,7 @@ const navMenu = Settings.querySelector(".nav-menu"),
 const setForm1 = document.querySelector(".js-settingForm1"),
     chkClock = setForm1.querySelector("input.chk-clock"),
     chkGreeting = setForm1.querySelector("input.chk-greeting"),
+    chkWeather = setForm1.querySelector("input.chk-weather"),
     chkTodo = setForm1.querySelector("input.chk-todo");
 
 const setForm2 = document.querySelector(".js-settingForm2"),
@@ -16,6 +17,7 @@ const setForm2 = document.querySelector(".js-settingForm2"),
 
 const VIEW_CLOCK_LS = "view clock",
     VIEW_GREET_LS = "view greeting",
+    VIEW_WEATHER_LS = "view weather",
     VIEW_TODO_LS = "view todo",
     HOUR12_LS = "hour12",
     SEC_LS = "seconds";
@@ -90,6 +92,18 @@ function checkGreet() {
     });
 }
 
+function checkWeather() {
+    chkWeather.addEventListener("change", (event) => {
+        if (event.target.checked) {
+            localStorage.setItem(VIEW_WEATHER_LS, "true");
+            weather.classList.remove("hide");
+        } else {
+            localStorage.setItem(VIEW_WEATHER_LS, "false");
+            weather.classList.add("hide");
+        }
+    });
+}
+
 function checkTodo() {
     chkTodo.addEventListener("change", (event) => {
         if (event.target.checked) {
@@ -147,12 +161,16 @@ function lsInit(){
     if(localStorage.getItem(VIEW_GREET_LS) == null) {
         localStorage.setItem(VIEW_GREET_LS, "true");
     }
+    if(localStorage.getItem(VIEW_WEATHER_LS) == null) {
+        localStorage.setItem(VIEW_WEATHER_LS, "true");
+    }
     if(localStorage.getItem(VIEW_TODO_LS) == null) {
         localStorage.setItem(VIEW_TODO_LS, "true");
     }
     
     localStorage.getItem(VIEW_CLOCK_LS) == "true" ? chkClock.checked = true : chkClock.checked = false;
     localStorage.getItem(VIEW_GREET_LS) == "true" ? chkGreeting.checked = true : chkGreeting.checked = false;
+    localStorage.getItem(VIEW_WEATHER_LS) == "true" ? chkWeather.checked = true : chkWeather.checked = false;
     localStorage.getItem(VIEW_TODO_LS) == "true" ? chkTodo.checked = true : chkTodo.checked = false;
     localStorage.getItem(HOUR12_LS) == "true" ? chkHour12.checked = true : chkHour12.checked = false;
     localStorage.getItem(SEC_LS) == "true" ? chkSec.checked = true : chkSec.checked = false;
@@ -162,6 +180,7 @@ function setInit() {
     lsInit();
     checkClock();
     checkGreet();
+    checkWeather();
     checkTodo();
     checkHour();
     showSec();
