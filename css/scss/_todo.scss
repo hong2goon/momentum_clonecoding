@@ -33,6 +33,9 @@
       max-height: 200px;
       overflow: auto;
       list-style: none;
+      &.scroll {
+        padding-right: 10px;
+      }
     
       .todo-item {
         position: relative;

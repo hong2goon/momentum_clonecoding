@@ -26,25 +26,13 @@ function selMenu() {
     for (let i=0; i<menuItems.length; i++) {
         menuItems[i].querySelector("a").addEventListener("click", function(e) {
             e.preventDefault();
-            if (this.parentElement.previousElementSibling !== null) {
-                this.parentElement.previousElementSibling.classList.remove("active");
-            }
-            if (this.parentElement.nextElementSibling !== null) {
-                this.parentElement.nextElementSibling.classList.remove("active");
-            }
+            const curAct = navMenu.querySelector(".active");
+            curAct.classList.remove("active");
             this.parentElement.classList.add("active");
-            if (setConts[i].previousElementSibling !== null) {
-                setConts[i].previousElementSibling.classList.add("hide");
-            }
-            if (setConts[i].nextElementSibling !== null) {
-                setConts[i].nextElementSibling.classList.add("hide");
-            }
-            setConts[i].classList.remove("hide");
 
-            const menuTit = this.textContent;
-            if (menuTit === "clock") {
-                
-            }
+            setConts.forEach(function(e, index) {
+                index === i ? e.classList.remove("hide") :  e.classList.add("hide");
+            });
         });
     }
 }

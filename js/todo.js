@@ -14,6 +14,7 @@ function deleteToDo(event) {
         li = btn.parentNode,
         ul = todoList.querySelector("ul");
     ul.removeChild(li);
+    ul.scrollHeight < 200 ? ul.classList.remove("scroll") : null;
 
     const length = ul.querySelectorAll("li").length;
     if (length === 0) {
@@ -46,8 +47,10 @@ function paintToDo(text) {
     li.appendChild(delBtn);
     li.id = newId;
     li.classList.add("todo-item");
-    ul.appendChild(li);
+    ul.insertBefore(li, ul.childNodes[0]);
     todoList.classList.add("active");
+
+    ul.scrollHeight > 200 ? ul.classList.add("scroll") : null;
 
     const toDoObj = {
         id: newId,
@@ -72,6 +75,7 @@ function loadToDos() {
             paintToDo(todo.text);
         });
     }
+    todoList.querySelector("ul").scrollHeight > 200 ? todoList.querySelector("ul").classList.add("scroll") : null;
 }
 
 function handleTodo(event) {

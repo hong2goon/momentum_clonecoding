@@ -9,9 +9,12 @@ function getWeather(lat, lng) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${API_KEY}&units=metric`).then(function(response) {
          return response.json();
     }).then(function(json) {
+        console.log(json.weather[0]);
         const temperature = json.main.temp,
+            description = json.weather[0].description,
+            iconCode = json.weather[0].icon,
             place = json.name;
-        metricStat.innerHTML = `<span class="icon-weather"></span><span class="metric-stat-number">${temperature}</span><span class="degree">°</span>`;
+        metricStat.innerHTML = `<span class="icon-weather"><img src="http://openweathermap.org/img/w/${iconCode}.png" alt="${description}" title="${description}"></span><span class="metric-stat-number">${temperature.toFixed(1)}</span><span class="degree">°</span>`;
         metricLocation.innerHTML = `${place}`;
     });
 } 
