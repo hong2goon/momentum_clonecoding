@@ -68,14 +68,17 @@
       <div class="settings">
         <div class="setting-panel-wrap">
           <div class="setting-panel">
-            <div>
+            <nav class="nav-wrap">
               <ul class="nav-menu">
                 <li class="nav-item active"><a href="#setting">Setting</a></li>
                 <li class="nav-item"><a href="#clock">Clock</a></li>
                 <li class="nav-item"><a href="#weather">Weather</a></li>
                 <li class="nav-item"><a href="#todo">Todo</a></li>
               </ul>
-            </div>
+              <div class="link-wrap">
+                <a href="#about">About</a>
+              </div>
+            </nav>
             
             <div class="setting-view">
               <div class="set-cont setting">
@@ -149,6 +152,30 @@
                     </li>
                   </ul>
                 </form>
+              </div>
+              <div class="set-cont weather hide">
+                <form class="js-settingForm js-settingForm3">
+                  <h2>Weather</h2>
+                  <span>Information is taken from OpenWeather API</span>
+                </form>
+              </div>
+              <div class="set-cont todo hide">
+                <form class="js-settingForm js-settingForm4">
+                  <h2>Todo</h2>
+                  <span>Break your goals into manageable</span>
+                </form>
+              </div>
+              <div class="set-cont about hide">
+                <div class="js-settingForm">
+                  <h2>About</h2>
+                  <span class="app-title">Personal Dashboard</span> <span class="app-version">V1.0.0</span>
+                  <h3>Info</h3>
+                  <span>This project is clone coding</span>
+                  <ul class="list-txt">
+                    <li>Origin service : <a href="https://momentumdash.com/" target="_blank">MOMENTUM</a></li>
+                    <li>Reference : <a href="https://www.youtube.com/playlist?list=PL7jH19IHhOLM8YwJMTa3UkXZN-LldYnyK" target="_blank">Nomad Coder - JS Basics</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

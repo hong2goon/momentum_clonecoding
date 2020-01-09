@@ -1,8 +1,10 @@
 const Settings = document.querySelector(".settings"),
     btnSetting = Settings.querySelector(".btn-setting");
 
-const navMenu = Settings.querySelector(".nav-menu"),
+const navWrap = Settings.querySelector(".nav-wrap")
+    navMenu = navWrap.querySelector(".nav-menu"),
     menuItems = navMenu.querySelectorAll("li"),
+    links = navWrap.querySelector(".link-wrap"),
     setConts = Settings.querySelectorAll(".set-cont");
 
 const setForm1 = document.querySelector(".js-settingForm1"),
@@ -26,15 +28,34 @@ function selMenu() {
     for (let i=0; i<menuItems.length; i++) {
         menuItems[i].querySelector("a").addEventListener("click", function(e) {
             e.preventDefault();
-            const curAct = navMenu.querySelector(".active");
-            curAct.classList.remove("active");
-            this.parentElement.classList.add("active");
-
+            const linkAct = links.querySelector(".active");
+            
+            menuItems.forEach(function(e, index) {
+                index === i ? e.classList.add("active") : e.classList.remove("active");
+                if (linkAct !== null) {
+                    linkAct.classList.remove("active");
+                }
+            });
+            
             setConts.forEach(function(e, index) {
                 index === i ? e.classList.remove("hide") :  e.classList.add("hide");
             });
         });
     }
+
+    const linkHelp = links.querySelector("a");
+    linkHelp.addEventListener("click", function(e) {
+        e.preventDefault();
+        e.target.classList.add("active");
+
+        menuItems.forEach(function(e) {
+            e.classList.remove("active");
+        });
+
+        setConts.forEach(function(e, index) {
+            index === (setConts.length - 1) ? e.classList.remove("hide") :  e.classList.add("hide");
+        });
+    });
 }
 
 function makeDim() {
@@ -42,7 +63,6 @@ function makeDim() {
         dim = document.createElement("div");
     dim.classList.add("dimmed");
     body.appendChild(dim);
-
     dim.addEventListener("click", delDim);
 }
 
@@ -54,6 +74,7 @@ function delDim() {
     if (modal !== null) {
         modal.classList.remove("show-fade-in");    
     }
+    todoList.style.zIndex = 1000;
 }
 
 function checkClock() {
@@ -134,7 +155,13 @@ function handleSettings(event) {
     event.preventDefault();
     Settings.classList.toggle("show-fade-in");
     const modalOpen = Settings.classList.contains("show-fade-in");
-    modalOpen ? makeDim() : delDim();
+    if (modalOpen) {
+        todoList.style.zIndex = 998;
+        makeDim();
+    } else {
+        todoList.style.zIndex = 1000;
+        delDim();
+    }
     selMenu();
 }
 
