@@ -11,10 +11,11 @@ let toDos = [];
 
 function deleteToDo(event) {
     const btn = event.target,
-        li = btn.parentNode;
-    todoList.removeChild(li);
+        li = btn.parentNode,
+        ul = todoList.querySelector("ul");
+    ul.removeChild(li);
 
-    const length = todoList.querySelectorAll("li").length;
+    const length = ul.querySelectorAll("li").length;
     if (length === 0) {
         todoList.classList.remove("active");
     } 
@@ -31,7 +32,8 @@ function saveToDos() {
 }
 
 function paintToDo(text) {
-    const li = document.createElement("li"),
+    const ul = todoList.querySelector("ul"),
+        li = document.createElement("li"),
         delBtn = document.createElement("button"),
         span = document.createElement("span"),
         newId = toDos.length + 1;
@@ -44,7 +46,7 @@ function paintToDo(text) {
     li.appendChild(delBtn);
     li.id = newId;
     li.classList.add("todo-item");
-    todoList.appendChild(li);
+    ul.appendChild(li);
     todoList.classList.add("active");
 
     const toDoObj = {
@@ -81,16 +83,6 @@ function btnTodos() {
     btnTodo.addEventListener("click", handleTodo);
 }
 
-function todoPanelClose() {
-    document.addEventListener("click", function(event){
-        event.preventDefault();
-        // if (!event.target.classList.contains("todo-panel")) {
-        //     const panelOpen = todoWrap.classList.contains("show-fade-in");
-        //     panelOpen ? todoWrap.classList.remove("show-fade-in") : null;
-        // }
-    })
-}
-
 function todoInit() {
     if(localStorage.getItem(TODOS_LS) == null) {
         localStorage.setItem(TODOS_LS, "[]");
@@ -98,7 +90,6 @@ function todoInit() {
     }
     loadToDos();
     btnTodos();
-    todoPanelClose();
     todoForm.addEventListener("submit", handleTodoSubmit);
 }
 

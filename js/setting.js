@@ -8,7 +8,8 @@ const navMenu = Settings.querySelector(".nav-menu"),
 const 
     setForm1 = document.querySelector(".js-settingForm1"),
     chkClock = setForm1.querySelector("input.chk-clock"),
-    chkGreeting = setForm1.querySelector("input.chk-greeting");
+    chkGreeting = setForm1.querySelector("input.chk-greeting"),
+    chkTodo = setForm1.querySelector("input.chk-todo");
 
 const 
     setForm2 = document.querySelector(".js-settingForm2"),
@@ -17,6 +18,7 @@ const
 
 const VIEW_CLOCK_LS = "view clock",
     VIEW_GREET_LS = "view greeting",
+    VIEW_TODO_LS = "view todo",
     HOUR12_LS = "hour12",
     SEC_LS = "seconds";
 
@@ -71,6 +73,20 @@ function checkGreet() {
     });
 }
 
+function checkTodo() {
+    chkTodo.addEventListener("change", (event) => {
+        if (event.target.checked) {
+            localStorage.setItem(VIEW_TODO_LS, "true");
+            todoWrap.classList.remove("hide");
+            todoListWrap.classList.remove("hide");
+        } else {
+            localStorage.setItem(VIEW_TODO_LS, "false");
+            todoWrap.classList.add("hide");
+            todoListWrap.classList.add("hide");
+        }
+    });
+}
+
 function checkHour() {
     chkHour12.addEventListener("change", (event) => {
         if (event.target.checked) {
@@ -105,37 +121,31 @@ function btnSettings() {
     btnSetting.addEventListener("click", handleSettings);
 }
 
-function setPanelClose() {
-    document.addEventListener("click", function(event){
-        event.preventDefault();
-        // if (!event.target.parentElement.classList.contains("setting")) {
-        //     const panelOpen = Settings.classList.contains("show-fade-in");
-        //     panelOpen ? Settings.classList.remove("show-fade-in") : null;
-        // }
-    })
-}
-
 function lsInit(){
-    if(localStorage.getItem("view clock") == null) {
-        localStorage.setItem("view clock", "true");
+    if(localStorage.getItem(VIEW_CLOCK_LS) == null) {
+        localStorage.setItem(VIEW_CLOCK_LS, "true");
     }
-    if(localStorage.getItem("view greeting") == null) {
-        localStorage.setItem("view greeting", "true");
+    if(localStorage.getItem(VIEW_GREET_LS) == null) {
+        localStorage.setItem(VIEW_GREET_LS, "true");
+    }
+    if(localStorage.getItem(VIEW_TODO_LS) == null) {
+        localStorage.setItem(VIEW_TODO_LS, "true");
     }
     
-    localStorage.getItem("view clock") == "true" ? chkClock.checked = true : chkClock.checked = false;
-    localStorage.getItem("view clock") == "true" ? chkGreeting.checked = true : chkGreeting.checked = false;
-    localStorage.getItem("hour12") == "true" ? chkHour12.checked = true : chkHour12.checked = false;
-    localStorage.getItem("seconds") == "true" ? chkSec.checked = true : chkSec.checked = false;
+    localStorage.getItem(VIEW_CLOCK_LS) == "true" ? chkClock.checked = true : chkClock.checked = false;
+    localStorage.getItem(VIEW_GREET_LS) == "true" ? chkGreeting.checked = true : chkGreeting.checked = false;
+    localStorage.getItem(VIEW_TODO_LS) == "true" ? chkTodo.checked = true : chkTodo.checked = false;
+    localStorage.getItem(HOUR12_LS) == "true" ? chkHour12.checked = true : chkHour12.checked = false;
+    localStorage.getItem(SEC_LS) == "true" ? chkSec.checked = true : chkSec.checked = false;
 }
 
 function setInit() {
     lsInit();
     checkClock();
     checkGreet();
+    checkTodo();
     checkHour();
     showSec();
     btnSettings();
-    setPanelClose();
 }
 setInit();

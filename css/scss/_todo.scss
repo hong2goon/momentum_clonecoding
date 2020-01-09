@@ -3,48 +3,62 @@
 
   .js-toDoList {
     margin: 16px auto;
-    padding: 15px 15px 30px;
+    padding: 0;
     width: 100%;
     max-width: 600px;
-    max-height: 200px;
-    overflow: auto;
-    list-style: none;
-    &.active {
-      background: rgba(0,0,0,.5);
-      border-radius: 8px;
-      &:before {
-        content:'To-Do';
-        display: block;
-        padding: 10px;
-        font-size: 24px;
-        font-weight: bold;
-        text-align: left;
-      }
-    }
-    .todo-item {
-      position: relative;
-      padding: 6px 10px;
-      text-align: left;
-      border-bottom: 1px solid rgba(255,255,255,.3);
+    height: 0;
+    background: rgba(0,0,0,.5);
+    border-radius: 8px;
+    overflow: hidden;
+    box-sizing: border-box;
 
-      .btn-del {
-        position: absolute;
-        display: block;
-        top: 50%;
-        right: 0;
-        width: 30px;
-        height: 30px;
-        text-indent: -9999px;
-        background: transparent url('../images/delete.svg') 50% 50% no-repeat;
-        background-size: 40%;
-        border: none;
-        opacity: .3;
-        cursor: pointer;
-        transform: translateY(-50%);
-        transition: opacity .5s ease-out;
+    &.active {
+      padding: 15px 15px 30px;
+      height: auto;
+    }
+
+    h2 {
+      margin: 0;
+      padding: 10px;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      max-height: 200px;
+      overflow: auto;
+      list-style: none;
+    
+      .todo-item {
+        position: relative;
+        padding: 6px 10px;
+        text-align: left;
+        border-bottom: 1px solid rgba(255,255,255,.3);
+
+        .btn-del {
+          position: absolute;
+          display: block;
+          top: 50%;
+          right: 0;
+          width: 30px;
+          height: 30px;
+          text-indent: -9999px;
+          background: transparent url('../images/delete.svg') 50% 50% no-repeat;
+          background-size: 40%;
+          border: none;
+          opacity: .3;
+          cursor: pointer;
+          transform: translateY(-50%);
+          transition: opacity .5s ease-out;
+        }
 
         &:hover {
-          opacity: 1;
+          .btn-del {
+            opacity: 1;
+          }
         }
       }
     }
