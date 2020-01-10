@@ -54,6 +54,7 @@ function loadCoords() {
 }
 
 function wtInit() {
+    localStorage.getItem(VIEW_WEATHER_LS) == "true" ? weather.classList.remove('hide') : weather.classList.add('hide');
     loadCoords();
 }
 wtInit();

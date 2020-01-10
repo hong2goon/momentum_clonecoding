@@ -69,6 +69,7 @@ function loadName() {
 }
 
 function greetInit() {
+    localStorage.getItem(VIEW_GREET_LS) == "true" ? greetWrap.classList.remove('hide') : greetWrap.classList.add('hide');
     if(localStorage.getItem("currentUser") == null) {
         localStorage.setItem("currentUser", "null");
     }

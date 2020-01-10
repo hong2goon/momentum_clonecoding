@@ -90,6 +90,13 @@ function btnTodos() {
 }
 
 function todoInit() {
+    if (localStorage.getItem(VIEW_TODO_LS) == "true") {
+        todoWrap.classList.remove("hide");
+        todoListWrap.classList.remove("hide");
+    } else {
+        todoWrap.classList.add("hide");
+        todoListWrap.classList.add("hide");
+    }
     if(localStorage.getItem(TODOS_LS) == null) {
         localStorage.setItem(TODOS_LS, "[]");
         todoList.classList.remove("active");

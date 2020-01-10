@@ -24,14 +24,15 @@ function getTime() {
 }
 
 function clockInit() {
-  if(localStorage.getItem("hour12") == null) {
-    localStorage.setItem("hour12", "false");
+  if(localStorage.getItem(HOUR12_LS) == null) {
+    localStorage.setItem(HOUR12_LS, "false");
   }
-  if(localStorage.getItem("seconds") == null) {
-      localStorage.setItem("seconds", "false");
+  if(localStorage.getItem(SEC_LS) == null) {
+      localStorage.setItem(SEC_LS, "false");
   }
-  localStorage.getItem("hour12") == "true" ? clockContainer.classList.add('hour12') : clockContainer.classList.remove('hour12');
-  localStorage.getItem("seconds") == "true" ? clockSec.classList.remove('hide') : clockSec.classList.add('hide');
+  localStorage.getItem(VIEW_CLOCK_LS) == "true" ? clockContainer.classList.remove('hide') : clockContainer.classList.add('hide');
+  localStorage.getItem(SEC_LS) == "true" ? clockContainer.classList.add('hour12') : clockContainer.classList.remove('hour12');
+  localStorage.getItem(SEC_LS) == "true" ? clockSec.classList.remove('hide') : clockSec.classList.add('hide');
   getTime();
   setInterval(getTime, 1000);
 }

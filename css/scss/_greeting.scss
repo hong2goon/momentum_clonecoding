@@ -12,7 +12,7 @@
     outline: none;
 
     &::placeholder {
-      color: rgba(255,255,255,.5);
+      color: rgba(255,255,255,.8);
     }
   }
 }
@@ -23,6 +23,7 @@
   padding: 5px 55px 6px;
   width: auto;
   font-size: 54px;
+  text-shadow: 0 4px 8px rgba(0,0,0,.5);
 
   .btn-edit {
     position: absolute;
