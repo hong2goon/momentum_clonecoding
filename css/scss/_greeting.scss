@@ -1,48 +1,85 @@
-.js-form {
-  input {
-    width: 600px;
-    padding: 5px;
-    font-size: 54px;
-    font-weight: normal;
-    color: #fff;
-    text-align: center;
-    border: none;
-    border-bottom: 2px solid #fff;
-    background: transparent;
-    outline: none;
+.greeting-wrap {
+  padding: 0 15px;
 
-    &::placeholder {
-      color: rgba(255,255,255,.8);
+  .js-form {
+    padding: 0 20px;
+
+    input {
+      width: 100%;
+      max-width: 600px;
+      padding: 5px;
+      font-size: 54px;
+      font-weight: normal;
+      color: #fff;
+      text-align: center;
+      border: none;
+      border-bottom: 2px solid #fff;
+      background: transparent;
+      box-sizing: border-box;
+      outline: none;
+
+      &::placeholder {
+        color: rgba(255,255,255,.8);
+      }
+    }
+  }
+
+  .js-greeting {
+    position:relative;
+    display: inline-block;
+    padding: 5px 55px 6px;
+    font-size: 54px;
+    vertical-align: bottom;
+    text-shadow: 0 4px 8px rgba(0,0,0,.5);
+
+    .btn-edit {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      background: transparent url('../images/edit.svg') 50% 50% no-repeat;
+      background-size: 120%;
+      text-indent: -9999px;
+      border: none;
+      opacity: 0;
+      cursor: pointer;
+      outline: none;
+      transform: translateY(-10px);
+      transition: opacity 0.5s ease-out;
+    }
+    &:hover {
+      .btn-edit {
+        opacity: 1;
+      }
     }
   }
 }
 
-.js-greeting {
-  position:relative;
-  display: inline-block;
-  padding: 5px 55px 6px;
-  width: auto;
-  font-size: 54px;
-  text-shadow: 0 4px 8px rgba(0,0,0,.5);
-
-  .btn-edit {
-    position: absolute;
-    top: 55%;
-    right: 5px;
-    width: 32px; height: 32px;
-    background: transparent url('../images/edit.svg') 50% 50% no-repeat;
-    background-size: 120%;
-    text-indent: -9999px;
-    border: none;
-    opacity: 0;
-    cursor: pointer;
-    outline: none;
-    transform: translateY(-50%);
-    transition: opacity 0.5s ease-out;
-  }
-  &:hover {
-    .btn-edit {
-      opacity: 1;
+@media screen and (max-width: 767px) {
+  .greeting-wrap {
+    .js-form {
+      input {
+        font-size: 30px;
+      }
+    }
+    .js-greeting {
+      padding: 5px 30px 6px;
+      min-width: 156px;
+      font-size: 30px;
+  
+      .fs-24 {
+        font-size: 24px;
+      }
+  
+      .btn-edit {
+        width: 22px;
+        height: 22px;
+        background-size: 100%;
+        transform: translateY(-5px);
+      }
+  
+      .greeting {
+        font-size: 24px;
+      }
     }
   }
 }

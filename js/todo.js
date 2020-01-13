@@ -1,6 +1,7 @@
 const todoListWrap = document.querySelector(".todoList-wrap"),
     todoList = todoListWrap.querySelector(".js-toDoList"),
     todoWrap = document.querySelector(".todo-wrap"),
+    todoPanel = todoWrap.querySelector(".todo-panel"),
     todoForm = todoWrap.querySelector(".js-todo-form"),
     todoInput = todoForm.querySelector("input"),
     btnTodo = todoWrap.querySelector(".btn-todo");
@@ -90,6 +91,8 @@ function btnTodos() {
 }
 
 function todoInit() {
+    todoPanel.style.width = window.innerWidth - 14 + "px";
+
     if (localStorage.getItem(VIEW_TODO_LS) == "true") {
         todoWrap.classList.remove("hide");
         todoListWrap.classList.remove("hide");

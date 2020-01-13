@@ -1,20 +1,12 @@
 const body = document.querySelector("body"),
     cover = body.querySelector(".cover");
+    bgImage = cover.querySelector(".bgImage");
 
 const IMG_NUMBER = 3;
 
-function handleImgLoad() {
-    console.log("finished loading");
-}
-
 function paintImage(imgNumber) {
-    const image = new Image(), 
-        imageWrap = document.createElement('div');
-    image.src = `images/background/${imgNumber + 1}.jpg`;
-    imageWrap.classList.add("bgImage");
-    imageWrap.appendChild(image);
-    cover.appendChild(imageWrap);
-    image.addEventListener("loadend", handleImgLoad);
+    const imageUrl = `../images/background/${imgNumber + 1}.jpg`;
+    bgImage.style.backgroundImage = `url('${imageUrl}')`;
 }
 
 function genRandom() {

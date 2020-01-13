@@ -43,7 +43,9 @@
             display: flex;
             bottom: 0;
             left: 7px;
-            width: 500px;
+            padding: 10px 0;
+            width: 100%;
+            max-width: 500px;
             background: rgba(0,0,0,.8);
             border-radius: 7px;
 
@@ -62,16 +64,16 @@
             .nav-wrap {
                 display: flex;
                 flex-direction: column;
+                border-right: 1px solid rgba(255,255,255,.12);
 
                 .nav-menu {
                     position: relative;
                     width: 150px;
-                    margin: 8px 0;
+                    margin: 0;
                     padding: 10px 0;
                     display: flex;
                     flex-direction: column;
                     flex: 1;
-                    border-right: 1px solid rgba(255,255,255,.12);
                     box-sizing: border-box;
                     overflow: hidden;
     
@@ -117,7 +119,7 @@
                 flex: 1;
                 overflow-y: auto;
                 & > div {
-                    padding: 20px;
+                    padding: 10px 20px;
                 }
 
                 .js-settingForm {
@@ -166,7 +168,16 @@
                             }
 
                             .label {
-                                opacity: .8;
+                                opacity: 1;
+
+                                .state {
+                                    opacity: .5;
+                                    transition: opacity .5s ease-in;
+
+                                    &.active {
+                                        opacity: 1;
+                                    }
+                                }
                                 & + .toggle-switch {
                                     float: right;
                                 }
@@ -231,6 +242,7 @@
                             margin: 5px 0 0;
                             font-size: 13px;
                             color: rgba(255,255,255,.5);
+                            word-break: break-all;
 
                             &:first-child {
                                 margin: 10px 0 0;
@@ -243,23 +255,21 @@
 
                             a {
                                 position: relative;
-                                padding-right: 16px;
                                 color: rgba(255,255,255,.8);
                                 font-style: italic;
                                 text-decoration: none;
+                                word-break: keep-all;
 
                                 &:after {
                                     content: '';
-                                    display: block;
-                                    position: absolute;
-                                    top: 50%;
-                                    right: 0;
+                                    display: inline-block;
+                                    margin-left: 5px;
                                     width: 14px;
                                     height: 14px;
-                                    background: url('../images/link.svg') 50% 50% no-repeat;
+                                    vertical-align: bottom;
+                                    background: url('../images/link.svg') no-repeat;
                                     background-size: 100%;
                                     opacity: .5;
-                                    transform: translateY(-50%);
                                 }
                             }
                         }
@@ -284,6 +294,50 @@
             display: block;
             opacity: 1;
             transform: translateY(0);
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .settings {
+        .setting-panel-wrap {
+            .setting-panel {
+                .nav-wrap {
+                    .nav-menu {
+                        width: 100px;
+
+                        li {
+                            font-size: 16px;
+
+                            &.active {
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                }
+
+                .setting-view {
+                    & > div {
+                        padding: 10px 15px; 
+
+                        .js-settingForm {
+                            h2 {
+                                margin: 2px 0 -5px;
+                                font-size: 20px;
+                            }
+                            h3 {
+                                font-size: 18px;
+                            }
+
+                            .setting-list {
+                                li {
+                                    padding: 10px 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

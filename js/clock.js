@@ -31,7 +31,7 @@ function clockInit() {
       localStorage.setItem(SEC_LS, "false");
   }
   localStorage.getItem(VIEW_CLOCK_LS) == "true" ? clockContainer.classList.remove('hide') : clockContainer.classList.add('hide');
-  localStorage.getItem(SEC_LS) == "true" ? clockContainer.classList.add('hour12') : clockContainer.classList.remove('hour12');
+  localStorage.getItem(HOUR12_LS) == "true" ? clockContainer.classList.add('hour12') : clockContainer.classList.remove('hour12');
   localStorage.getItem(SEC_LS) == "true" ? clockSec.classList.remove('hide') : clockSec.classList.add('hide');
   getTime();
   setInterval(getTime, 1000);

@@ -28,3 +28,20 @@
     }
   }
 }
+
+@media screen and (max-width: 767px) {
+  .clock-wrap {
+    .js-clock {
+      span {
+        font-size: 60px;
+
+        &.format {
+          font-size: 30px;
+        }
+        &.seconds {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}

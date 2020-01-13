@@ -88,7 +88,7 @@
                   <h3>View</h3>
                   <ul class="setting-list">
                     <li>
-                      <span class="label">Clock</span>
+                      <span class="label"><span class="state active">Clock</span></span>
                       <div class="toggle-switch">
                         <label>
                           <input type="checkbox" class="chk-clock" name="clock" value="clock" />
@@ -97,7 +97,7 @@
                       </div>
                     </li>
                     <li>
-                      <span class="label">Greeting</span>
+                      <span class="label"><span class="state active">Greeting</span></span>
                       <div class="toggle-switch">
                         <label>
                           <input type="checkbox" class="chk-greeting" name="gretting" value="greeting" />
@@ -106,7 +106,7 @@
                       </div>
                     </li>
                     <li>
-                      <span class="label">Weather</span>
+                      <span class="label"><span class="state active">Weather</span></span>
                       <div class="toggle-switch">
                         <label>
                           <input type="checkbox" class="chk-weather" name="weather" value="weather" />
@@ -115,7 +115,7 @@
                       </div>
                     </li>
                     <li>
-                      <span class="label">To-do</span>
+                      <span class="label"><span class="state active">To-do</span></span>
                       <div class="toggle-switch">
                         <label>
                           <input type="checkbox" class="chk-todo" name="todo" value="todo" />
@@ -133,7 +133,7 @@
                   <h3>Options</h3>
                   <ul class="setting-list">
                     <li>
-                      <span class="label">12 hour / 24 hour</span>
+                      <span class="label"><span class="state hour12">12 hour</span> / <span class="state hour24 active">24 hour</span></span>
                       <div class="toggle-switch">
                         <label>
                           <input type="checkbox" class="chk-12h" name="12h" value="12h" />
@@ -142,7 +142,7 @@
                       </div>
                     </li>
                     <li>
-                      <span class="label">show seconds</span>
+                      <span class="label"><span class="state">show seconds</span></span>
                       <div class="toggle-switch">
                         <label>
                           <input type="checkbox" class="chk-sec" name="sec" value="sec" />
@@ -167,7 +167,7 @@
               </div>
               <div class="set-cont about hide">
                 <div class="js-settingForm">
-                  <h2>About</h2>
+                  <h2 class="mg-b0">About</h2>
                   <span class="app-title">Personal Dashboard</span> <span class="app-version">V1.0.0</span>
                   <h3>Info</h3>
                   <span>This project is clone coding</span>
@@ -185,7 +185,9 @@
     </div>
 
     <!-- backgroun -->
-    <div class="region cover"></div>
+    <div class="region cover">
+      <div class="bgImage"></div>
+    </div>
 
     <!-- js -->
     <script src="js/setting.js"></script>

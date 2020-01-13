@@ -56,7 +56,16 @@ function paintGreeting(name) {
             greet = "Good Evening";
         }
     }
-    greeting.innerHTML = `<span class="greeting">${greet}</span>, <span class="userName">${name}</span>. <button class="btn-edit" onClick="handleEdit(event);">edit</button>`;
+    
+    const strByteLength = function(s,b,i,c) {
+        for(b=i=0; c=s.charCodeAt(i++); b+=c>>11 ? 3:c>>7 ? 2:1);
+        return b;
+    };
+    if (strByteLength(name) > 15) {
+        greeting.innerHTML = `<span class="greeting">${greet}</span>, <span class="userName fs-24">${name}</span>. <button class="btn-edit" onClick="handleEdit(event);">edit</button>`;
+    } else {
+        greeting.innerHTML = `<span class="greeting">${greet}</span>, <span class="userName">${name}</span>. <button class="btn-edit" onClick="handleEdit(event);">edit</button>`;
+    }
 }
 
 function loadName() {

@@ -1,4 +1,5 @@
 const Settings = document.querySelector(".settings"),
+    settingPanel = Settings.querySelector('.setting-panel'),
     btnSetting = Settings.querySelector(".btn-setting");
 
 const navWrap = Settings.querySelector(".nav-wrap")
@@ -79,74 +80,95 @@ function delDim() {
 
 function checkClock() {
     chkClock.addEventListener("change", (event) => {
+        const label = event.target.closest("div").parentElement.querySelector(".state");
         if (event.target.checked) {
             localStorage.setItem(VIEW_CLOCK_LS, "true");
             clockContainer.classList.remove("hide");
+            label.classList.add("active");
         } else {
             localStorage.setItem(VIEW_CLOCK_LS, "false");
             clockContainer.classList.add("hide");
+            label.classList.remove("active");
         }
     });
 }
 
 function checkGreet() {
     chkGreeting.addEventListener("change", (event) => {
+        const label = event.target.closest("div").parentElement.querySelector(".state");
         if (event.target.checked) {
             localStorage.setItem(VIEW_GREET_LS, "true");
             greetWrap.classList.remove("hide");
+            label.classList.add("active");
         } else {
             localStorage.setItem(VIEW_GREET_LS, "false");
             greetWrap.classList.add("hide");
+            label.classList.remove("active");
         }
     });
 }
 
 function checkWeather() {
     chkWeather.addEventListener("change", (event) => {
+        const label = event.target.closest("div").parentElement.querySelector(".state");
         if (event.target.checked) {
             localStorage.setItem(VIEW_WEATHER_LS, "true");
             weather.classList.remove("hide");
+            label.classList.add("active");
         } else {
             localStorage.setItem(VIEW_WEATHER_LS, "false");
             weather.classList.add("hide");
+            label.classList.remove("active");
         }
     });
 }
 
 function checkTodo() {
     chkTodo.addEventListener("change", (event) => {
+        const label = event.target.closest("div").parentElement.querySelector(".state");
         if (event.target.checked) {
             localStorage.setItem(VIEW_TODO_LS, "true");
             todoWrap.classList.remove("hide");
             todoListWrap.classList.remove("hide");
+            label.classList.add("active");
         } else {
             localStorage.setItem(VIEW_TODO_LS, "false");
             todoWrap.classList.add("hide");
             todoListWrap.classList.add("hide");
+            label.classList.remove("active");
         }
     });
 }
 
 function checkHour() {
     chkHour12.addEventListener("change", (event) => {
+        const label12 = event.target.closest("div").parentElement.querySelector(".state.hour12"),
+            label24 = event.target.closest("div").parentElement.querySelector(".state.hour24");
         if (event.target.checked) {
             localStorage.setItem(HOUR12_LS, "true");
             clockContainer.classList.add("hour12");
+            label12.classList.add("active");
+            label24.classList.remove("active");
         } else {
             localStorage.setItem(HOUR12_LS, "false");
             clockContainer.classList.remove("hour12");
+            label12.classList.remove("active");
+            label24.classList.add("active");
         }
     });
 }
 
 function showSec() {
     chkSec.addEventListener("change", (event) => {
+        const label = event.target.closest("div").parentElement.querySelector(".state");
         if (event.target.checked) {
             localStorage.setItem(SEC_LS, "true");
             clockSec.classList.remove("hide");
+            label.classList.add("active");
         } else {
             localStorage.setItem(SEC_LS, "false");
             clockSec.classList.add("hide");
+            label.classList.remove("active");
         }
     });
 }
@@ -170,6 +192,14 @@ function btnSettings() {
 }
 
 function lsInit(){
+    const chkClockLabel = chkClock.closest("div").parentElement.querySelector(".state"),
+        chkGreetingLabel = chkGreeting.closest("div").parentElement.querySelector(".state"),
+        chkWeatherLabel = chkWeather.closest("div").parentElement.querySelector(".state"),
+        chkTodoLabel = chkTodo.closest("div").parentElement.querySelector(".state"),
+        chkHour12Label = chkHour12.closest("div").parentElement.querySelector(".state.hour12"),
+        chkHour24Label = chkHour12.closest("div").parentElement.querySelector(".state.hour24"),
+        chkSecLabel = chkSec.closest("div").parentElement.querySelector(".state");
+
     if(localStorage.getItem(VIEW_CLOCK_LS) == null) {
         localStorage.setItem(VIEW_CLOCK_LS, "true");
     }
@@ -183,15 +213,55 @@ function lsInit(){
         localStorage.setItem(VIEW_TODO_LS, "true");
     }
     
-    localStorage.getItem(VIEW_CLOCK_LS) == "true" ? chkClock.checked = true : chkClock.checked = false;
-    localStorage.getItem(VIEW_GREET_LS) == "true" ? chkGreeting.checked = true : chkGreeting.checked = false;
-    localStorage.getItem(VIEW_WEATHER_LS) == "true" ? chkWeather.checked = true : chkWeather.checked = false;
-    localStorage.getItem(VIEW_TODO_LS) == "true" ? chkTodo.checked = true : chkTodo.checked = false;
-    localStorage.getItem(HOUR12_LS) == "true" ? chkHour12.checked = true : chkHour12.checked = false;
-    localStorage.getItem(SEC_LS) == "true" ? chkSec.checked = true : chkSec.checked = false;
+    if (localStorage.getItem(VIEW_CLOCK_LS) == "true") {
+        chkClock.checked = true;
+        chkClockLabel.classList.add("active");
+    } else {
+        chkClock.checked = false;
+        chkClockLabel.classList.remove("active");
+    }
+    if (localStorage.getItem(VIEW_GREET_LS) == "true") {
+        chkGreeting.checked = true;
+        chkGreetingLabel.classList.add("active");
+    } else {
+        chkGreeting.checked = false;
+        chkGreetingLabel.classList.remove("active");
+    }
+    if (localStorage.getItem(VIEW_WEATHER_LS) == "true") {
+        chkWeather.checked = true;
+        chkWeatherLabel.classList.add("active");
+    } else {
+        chkWeather.checked = false;
+        chkWeatherLabel.classList.remove("active");
+    }
+    if (localStorage.getItem(VIEW_TODO_LS) == "true") {
+        chkTodo.checked = true;
+        chkTodoLabel.classList.add("active");
+    } else {
+        chkTodo.checked = false;
+        chkTodoLabel.classList.remove("active");
+    }
+    if (localStorage.getItem(HOUR12_LS) == "true") {
+        chkHour12.checked = true;
+        chkHour12Label.classList.add("active");
+        chkHour24Label.classList.remove("active");
+    } else {
+        chkHour12.checked = false;
+        chkHour12Label.classList.remove("active");
+        chkHour24Label.classList.add("active");
+    }
+    if (localStorage.getItem(SEC_LS) == "true") {
+        chkSec.checked = true;
+        chkSecLabel.classList.add("active");
+    } else {
+        chkSec.checked = false;
+        chkSecLabel.classList.remove("active");
+    }
 }
 
 function setInit() {
+    settingPanel.style.width = window.innerWidth - 14 + "px";
+
     lsInit();
     checkClock();
     checkGreet();
