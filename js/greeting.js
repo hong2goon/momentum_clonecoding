@@ -62,9 +62,9 @@ function paintGreeting(name) {
         return b;
     };
     if (strByteLength(name) > 15) {
-        greeting.innerHTML = `<span class="greeting">${greet}</span>, <span class="userName fs-24">${name}. <button class="btn-edit" onClick="handleEdit(event);">edit</button></span>`;
+        greeting.innerHTML = `<span class="greeting">${greet}, </span><span class="userName fs-24">${name}. <button class="btn-edit" onClick="handleEdit(event);">edit</button></span>`;
     } else {
-        greeting.innerHTML = `<span class="greeting">${greet}</span>, <span class="userName">${name}. <button class="btn-edit" onClick="handleEdit(event);">edit</button></span>`;
+        greeting.innerHTML = `<span class="greeting">${greet}, </span><span class="userName">${name}. <button class="btn-edit" onClick="handleEdit(event);">edit</button></span>`;
     }
 }
 
