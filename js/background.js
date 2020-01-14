@@ -5,7 +5,7 @@ const body = document.querySelector("body"),
 const IMG_NUMBER = 3;
 
 function paintImage(imgNumber) {
-    const imageUrl = `../../images/background/${imgNumber + 1}.jpg`;
+    const imageUrl = `images/background/${imgNumber + 1}.jpg`;
     bgImage.style.backgroundImage = `url('${imageUrl}')`;
 }
 
